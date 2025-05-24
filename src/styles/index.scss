@@ -1,0 +1,265 @@
+@import "_variables";
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: $background-color;
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+.left-menu-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    background-color: $main-color;
+    color: $dark-text-color;
+    width: 100px;
+    border-radius: 20px;
+    height: 100%;
+    padding: 20px;
+}
+
+.left-menu-container .active {
+    color: $light-text-color;
+}
+
+.left-menu-button {
+    @include flexCenter();
+    flex-direction: column;
+    gap: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    h5 {
+        font-weight: 500;
+    }
+}
+
+main {
+    @include flexCenter();
+    flex-direction: column;
+    flex-grow: 1;
+    width: 50%;
+    height: 100%;
+}
+
+.search-input {
+    width: 95%;
+    height: 50px;
+    background-color: $main-color;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: $light-text-color;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.weather-info-container {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    padding: 20px 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    .weather-type {
+        width: 200px;
+    }
+}
+
+.left-weather-info-container {
+    margin-right: auto;
+
+    p {
+        color: $dark-text-color;
+        font-size: 1.2rem;
+    }
+}
+
+.weather-info-place {
+    font-size: 2.7rem;
+    color: $light-text-color;
+    margin-bottom: 10px;
+}
+
+.weather-info-degrees {
+    font-size: 3.5rem;
+    color: $light-text-color;
+}
+
+.upper-left-weather-info-container {
+    margin-bottom: 30px;
+}
+
+.day-forecast-container {
+    background-color: $main-color;
+    width: 95%;
+    height: 30%;
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+
+    h5 {
+        color: $dark-text-color;
+        margin-bottom: 10px;
+    }
+}
+
+.day-forecasts-container {
+    @include flexCenter();
+}
+
+.day-forecast {
+    border-right: solid darken($dark-text-color, 20) 1px;
+    padding-right: 29px;
+    margin-right: 29px;
+    @include flexCenter();
+    flex-direction: column;
+
+    &:last-child {
+        border: none;
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    h5 {
+        color: $dark-text-color;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    h3 {
+        color: $light-text-color;
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+
+    .day-forecast-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.air-conditions-container {
+    background-color: $main-color;
+    width: 95%;
+    height: 30%;
+    border-radius: 20px;
+    padding: 20px 30px;
+
+    &>h5 {
+        color: $dark-text-color;
+        margin-bottom: 20px;
+    }
+}
+
+.air-condition-types-upper-container {
+    margin-bottom: 10px;
+}
+
+.air-condition-types-upper-container,
+.air-condition-types-bottom-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.air-condition-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+
+    img {
+        margin-bottom: auto;
+    }
+    
+    h5 {
+        color: $dark-text-color;
+    }
+
+    h2 {
+        color: $light-text-color;
+        font-size: 2rem;
+    }
+}
+
+.air-condition-info-container {
+    h2 {
+        margin-top: 5px;
+    }
+}
+
+.week-forecasts-container {
+    background-color: $main-color;
+    width: 30%;
+    border-radius: 20px;
+    padding: 30px 40px;
+    height: 100%;
+}
+
+.week-forecasts-title {
+    margin-bottom: 20px;
+    color: $dark-text-color;
+}
+
+.week-forecast-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: solid darken($dark-text-color, 20) 1px;
+
+    &:last-child {
+        border: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
+.week-forecast-date {
+    color: $dark-text-color;
+}
+
+.week-forecast-type-container {
+    @include flexCenter();
+    gap: 5px;
+    margin-left: auto;
+    margin-right: auto;
+
+    h5 {
+        color: $light-text-color;
+        margin-left: 10px;
+    }
+}
+
+.week-forecast-degrees {
+    color: $dark-text-color;
+
+    span {
+        color: $light-text-color;
+    }
+}
