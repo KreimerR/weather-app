@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# Weather app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This is a responsive and feature-rich Weather application built with React and TypeScript. Developed as a portfolio project, it allows users to search for cities by name or geographic coordinates and view detailed weather forecasts. The application displays hourly forecasts (from 0:00 to 23:00) and a 7-day forecast for the selected location. Users can also create a list of favorite cities to quickly check their current weather conditions. A dark mode is included for an enhanced user experience. The main focus of this project is working with external APIs, including fetching, handling, and displaying real-time weather data in a structured and user-friendly manner.
 
-Currently, two official plugins are available:
+## Technologies
+- HTML
+- Sass
+- TypeScript
+- React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/KreimerR/weather-app.git
+   ```
 
-## Expanding the ESLint configuration
+2. Navigate to the project folder:
+   ```bash
+   cd weather-app
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Install npm packages:
+   ```bash
+   npm install
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features
+- Search weather by city name or geographic coordinates
+- View hourly forecast (0:00 - 23:00)
+- View 7-day forecast
+- Add and manage a list of favorite cities
+- Toggle between light and dark mode
+- Real-time weather data via external APIs
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Screenshots
+<img src="./src/assets/screenshots/1.png" alt="1">
+<img src="./src/assets/screenshots/2.png" alt="2">
+<img src="./src/assets/screenshots/3.png" alt="3">
+<img src="./src/assets/screenshots/4.png" alt="4">
+<img src="./src/assets/screenshots/5.png" alt="5">
+<img src="./src/assets/screenshots/6.png" alt="6">
+<img src="./src/assets/screenshots/7.png" alt="7">
+<img src="./src/assets/screenshots/8.png" alt="8">
+<img src="./src/assets/screenshots/9.png" alt="9">
+<img src="./src/assets/screenshots/10.png" alt="10">
+<img src="./src/assets/screenshots/11.png" alt="11">
+<img src="./src/assets/screenshots/12.png" alt="12">
+<img src="./src/assets/screenshots/13.png" alt="13">
+<img src="./src/assets/screenshots/14.png" alt="14">
+<img src="./src/assets/screenshots/15.png" alt="15">
+<img src="./src/assets/screenshots/16.png" alt="16">

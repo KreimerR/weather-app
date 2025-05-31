@@ -1095,7 +1095,7 @@ main {
     width: 15px;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .app-container {
     flex-direction: column;
     width: 100vw;
