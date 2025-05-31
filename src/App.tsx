@@ -492,6 +492,66 @@ export default function App() {
     }
   }
 
+  function weekForecast() {
+    return (
+      <div className="week-forecasts-container">
+        <h5 className="week-forecasts-title">7-DAY FORECAST</h5>
+
+        <div className="week-forecasts-general-container">
+          <WeekForecast
+            date={() => getDays(0, 0)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[0].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[0].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(0))}
+            weatherType3={() => weatherType3(pathFinder2(0))}
+          />
+          <WeekForecast
+            date={() => getDays(1, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[1].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[1].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(1))}
+            weatherType3={() => weatherType3(pathFinder2(1))}
+          />
+          <WeekForecast
+            date={() => getDays(2, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[2].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[2].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(2))}
+            weatherType3={() => weatherType3(pathFinder2(2))}
+          />
+          <WeekForecast
+            date={() => getDays(3, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[3].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[3].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(3))}
+            weatherType3={() => weatherType3(pathFinder2(3))}
+          />
+          <WeekForecast
+            date={() => getDays(4, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[4].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[4].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(4))}
+            weatherType3={() => weatherType3(pathFinder2(4))}
+          />
+          <WeekForecast
+            date={() => getDays(5, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[5].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[5].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(5))}
+            weatherType3={() => weatherType3(pathFinder2(5))}
+          />
+          <WeekForecast
+            date={() => getDays(6, 1)}
+            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[6].toString().split('.')[0].slice(0, 2))}
+            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[6].toString().split('.')[0].slice(0, 2))}
+            weatherType2={() => weatherType2(pathFinder2(6))}
+            weatherType3={() => weatherType3(pathFinder2(6))}
+          />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="app-container">
       <div className="left-menu-container">
@@ -920,62 +980,13 @@ export default function App() {
         : null}
       </main>
 
-      <div className="week-forecasts-container">
-        <h5 className="week-forecasts-title">7-DAY FORECAST</h5>
-
-        <div className="week-forecasts-general-container">
-          <WeekForecast
-            date={() => getDays(0, 0)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[0].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[0].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(0))}
-            weatherType3={() => weatherType3(pathFinder2(0))}
-          />
-          <WeekForecast
-            date={() => getDays(1, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[1].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[1].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(1))}
-            weatherType3={() => weatherType3(pathFinder2(1))}
-          />
-          <WeekForecast
-            date={() => getDays(2, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[2].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[2].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(2))}
-            weatherType3={() => weatherType3(pathFinder2(2))}
-          />
-          <WeekForecast
-            date={() => getDays(3, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[3].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[3].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(3))}
-            weatherType3={() => weatherType3(pathFinder2(3))}
-          />
-          <WeekForecast
-            date={() => getDays(4, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[4].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[4].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(4))}
-            weatherType3={() => weatherType3(pathFinder2(4))}
-          />
-          <WeekForecast
-            date={() => getDays(5, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[5].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[5].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(5))}
-            weatherType3={() => weatherType3(pathFinder2(5))}
-          />
-          <WeekForecast
-            date={() => getDays(6, 1)}
-            maxTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMax[6].toString().split('.')[0].slice(0, 2))}
-            minTemperature={weather2 === null ? "null" : Number(weather2.daily.temperature2mMin[6].toString().split('.')[0].slice(0, 2))}
-            weatherType2={() => weatherType2(pathFinder2(6))}
-            weatherType3={() => weatherType3(pathFinder2(6))}
-          />
-        </div>
-
-      </div>
+      {
+        currentPage === "Cities" ? 
+        windowWidth < 550 ? 
+        null : 
+        weekForecast() : 
+        weekForecast()
+      }
     </div>
   )
 }

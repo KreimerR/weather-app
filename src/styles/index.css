@@ -940,6 +940,9 @@ main {
   .icon-container img {
     width: 15px;
   }
+  .saved-cities-container h1 {
+    font-size: 1rem;
+  }
   .search-results-container li {
     font-size: 0.5rem;
   }
