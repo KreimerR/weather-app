@@ -1,0 +1,35 @@
+:root {
+    --main-color: #f2faff;
+    --second-main-color: #eaf1f5;
+    --background-color: #4e95cb;
+    --text-color-1: #464646;
+    --text-color-2: #575757;
+    --main-text-color-1: #f2faff;
+    --main-text-color-2: #eaeaea;
+    --hover-text-color: #363636;
+    --hover-icon-color: brightness(50%);
+    --border-color: rgb(211, 211, 211);
+    --save-location-icon-color: brightness(150%);
+    --hover-save-location-icon-color: brightness(100%);
+}
+
+[theme="dark"] {
+    --main-color: #202b3b;
+    --second-main-color: #222e3f;
+    --background-color: #0b131e;
+    --text-color-1: #dcdcdc;
+    --text-color-2: #8f959d;
+    --main-text-color-1: #dcdcdc;
+    --main-text-color-2: #8f959d;
+    --hover-text-color: #e0e0e0;
+    --hover-icon-color: brightness(150%);
+    --border-color: rgb(60, 60, 60);
+    --save-location-icon-color: brightness(150%);
+    --hover-save-location-icon-color: brightness(250%);
+}
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

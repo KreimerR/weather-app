@@ -1,3 +1,33 @@
+:root {
+  --main-color: #f2faff;
+  --second-main-color: #eaf1f5;
+  --background-color: #4e95cb;
+  --text-color-1: #464646;
+  --text-color-2: #575757;
+  --main-text-color-1: #f2faff;
+  --main-text-color-2: #eaeaea;
+  --hover-text-color: #363636;
+  --hover-icon-color: brightness(50%);
+  --border-color: rgb(211, 211, 211);
+  --save-location-icon-color: brightness(150%);
+  --hover-save-location-icon-color: brightness(100%);
+}
+
+[theme=dark] {
+  --main-color: #202b3b;
+  --second-main-color: #222e3f;
+  --background-color: #0b131e;
+  --text-color-1: #dcdcdc;
+  --text-color-2: #8f959d;
+  --main-text-color-1: #dcdcdc;
+  --main-text-color-2: #8f959d;
+  --hover-text-color: #e0e0e0;
+  --hover-icon-color: brightness(150%);
+  --border-color: rgb(60, 60, 60);
+  --save-location-icon-color: brightness(150%);
+  --hover-save-location-icon-color: brightness(250%);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,33 +36,37 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #0b131e;
+  background-color: var(--background-color);
 }
 
 .app-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 20px;
   height: 100vh;
+  overflow: auto;
 }
 
 .left-menu-container {
+  position: sticky;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   gap: 40px;
-  background-color: #202b3b;
-  color: #8f959d;
+  background-color: var(--main-color);
+  color: var(--text-color-2);
   width: 100px;
   border-radius: 20px;
   height: 100%;
   padding: 20px;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
 }
 
-.left-menu-container .active {
-  color: #dcdcdc;
+.logo {
+  filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.2));
 }
 
 .left-menu-button {
@@ -49,6 +83,29 @@ body {
   font-weight: 500;
 }
 
+.not-active:hover .not-active-h5 {
+  color: var(--hover-text-color);
+}
+.not-active:hover .not-active-img {
+  filter: var(--hover-icon-color);
+}
+
+.active .active-h5 {
+  color: var(--hover-text-color);
+}
+.active .active-img {
+  filter: var(--hover-icon-color);
+}
+
+.theme-toggler {
+  margin-top: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.theme-toggler:hover {
+  filter: var(--hover-icon-color);
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -59,16 +116,78 @@ main {
   height: 100%;
 }
 
-.search-input {
+.search-containers {
+  display: flex;
   width: 95%;
+  gap: 10px;
+}
+
+.search-container {
+  position: relative;
+  width: 95%;
+  max-width: 95%;
+}
+
+.search-input {
+  width: 100%;
   height: 50px;
-  background-color: #202b3b;
+  background-color: var(--main-color);
   outline: none;
   border: none;
   border-radius: 10px;
-  color: #dcdcdc;
+  color: var(--text-color-1);
   padding: 10px;
   font-size: 0.9rem;
+  z-index: 4;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.search-results-container {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  z-index: 4;
+  position: absolute;
+  top: 70%;
+  left: 0;
+  right: 0;
+  list-style: none;
+  background-color: var(--main-color);
+  color: var(--text-color-1);
+  border-bottom: solid var(--border-color) 1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.search-results-container li {
+  padding: 0.5rem;
+  border-bottom: solid var(--border-color) 1px;
+  cursor: pointer;
+}
+.search-results-container li:last-child {
+  border-bottom: none;
+}
+.search-results-container li:hover {
+  background-color: var(--second-main-color);
+  border-radius: 10px;
+}
+
+.add-favorite-location-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+.add-favorite-location-btn:hover img {
+  filter: var(--hover-save-location-icon-color);
+}
+.add-favorite-location-btn img {
+  filter: var(--save-location-icon-color);
 }
 
 .weather-info-container {
@@ -80,26 +199,32 @@ main {
   margin-bottom: auto;
 }
 .weather-info-container .weather-type {
-  width: 200px;
+  width: 23%;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
 }
 
 .left-weather-info-container {
   margin-right: auto;
 }
 .left-weather-info-container p {
-  color: #8f959d;
-  font-size: 1.2rem;
+  color: var(--main-text-color-2);
+  font-size: 0.8rem;
+  margin-left: 2px;
+}
+.left-weather-info-container h1,
+.left-weather-info-container p {
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
 }
 
 .weather-info-place {
   font-size: 2.7rem;
-  color: #dcdcdc;
+  color: var(--main-text-color-1);
   margin-bottom: 10px;
 }
 
 .weather-info-degrees {
   font-size: 3.5rem;
-  color: #dcdcdc;
+  color: var(--main-text-color-1);
 }
 
 .upper-left-weather-info-container {
@@ -107,15 +232,16 @@ main {
 }
 
 .day-forecast-container {
-  background-color: #202b3b;
+  background-color: var(--main-color);
   width: 95%;
   height: 30%;
   border-radius: 20px;
   padding: 20px 30px;
   margin-bottom: 20px;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
 }
 .day-forecast-container h5 {
-  color: #8f959d;
+  color: var(--text-color-2);
   margin-bottom: 10px;
 }
 
@@ -123,16 +249,24 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .day-forecast {
-  border-right: solid #5c626a 1px;
-  padding-right: 29px;
-  margin-right: 29px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-right: 30px;
+  margin-right: 30px;
+  border-right: solid var(--border-color) 1px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 .day-forecast:last-child {
   border: none;
@@ -140,30 +274,40 @@ main {
   margin-right: 0;
 }
 .day-forecast h5 {
-  color: #8f959d;
+  color: var(--text-color-2);
   margin-bottom: 10px;
   font-size: 1rem;
 }
 .day-forecast h3 {
-  color: #dcdcdc;
+  color: var(--text-color-1);
   margin-top: 10px;
   font-size: 1.5rem;
 }
 .day-forecast .day-forecast-icon {
   width: 50px;
   height: 50px;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.1));
 }
 
 .air-conditions-container {
-  background-color: #202b3b;
+  background-color: var(--main-color);
   width: 95%;
   height: 30%;
   border-radius: 20px;
   padding: 20px 30px;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
 }
 .air-conditions-container > h5 {
-  color: #8f959d;
+  color: var(--text-color-2);
   margin-bottom: 20px;
+}
+
+.air-conditions-general-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70%;
 }
 
 .air-condition-types-upper-container {
@@ -185,12 +329,13 @@ main {
 }
 .air-condition-container img {
   margin-bottom: auto;
+  filter: brightness(80%);
 }
 .air-condition-container h5 {
-  color: #8f959d;
+  color: var(--text-color-2);
 }
 .air-condition-container h2 {
-  color: #dcdcdc;
+  color: var(--text-color-1);
   font-size: 2rem;
 }
 
@@ -199,16 +344,28 @@ main {
 }
 
 .week-forecasts-container {
-  background-color: #202b3b;
+  position: sticky;
+  top: 0;
+  right: 0;
+  background-color: var(--main-color);
   width: 30%;
   border-radius: 20px;
   padding: 30px 40px;
   height: 100%;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.week-forecasts-general-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
+  padding-top: 10px;
 }
 
 .week-forecasts-title {
   margin-bottom: 20px;
-  color: #8f959d;
+  color: var(--text-color-2);
 }
 
 .week-forecast-container {
@@ -217,7 +374,7 @@ main {
   gap: 20px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  border-bottom: solid #5c626a 1px;
+  border-bottom: solid var(--border-color) 1px;
 }
 .week-forecast-container:last-child {
   border: none;
@@ -226,7 +383,8 @@ main {
 }
 
 .week-forecast-date {
-  color: #8f959d;
+  color: var(--text-color-2);
+  width: 50px;
 }
 
 .week-forecast-type-container {
@@ -238,13 +396,1374 @@ main {
   margin-right: auto;
 }
 .week-forecast-type-container h5 {
-  color: #dcdcdc;
+  color: var(--text-color-1);
   margin-left: 10px;
 }
 
+.week-forecast-type-icon {
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
+}
+
 .week-forecast-degrees {
-  color: #8f959d;
+  color: var(--text-color-2);
+  width: 55px;
 }
 .week-forecast-degrees span {
-  color: #dcdcdc;
+  color: var(--text-color-1);
+}
+
+.saved-cities-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 95%;
+  height: 100%;
+}
+.saved-cities-container > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--main-text-color-1);
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.saved-city {
+  width: 95%;
+  display: flex;
+  gap: 10px;
+}
+.saved-city:last-child {
+  padding-bottom: 20px;
+}
+
+.city-info-container {
+  background-color: var(--main-color);
+  border-radius: 10px;
+  padding: 15px;
+  flex-grow: 1;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+.city-info-container:hover {
+  background-color: var(--second-main-color);
+  cursor: pointer;
+}
+.city-info-container h1 {
+  color: var(--text-color-1);
+}
+.city-info-container p {
+  color: var(--text-color-2);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: auto;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+.icon-container:hover {
+  background-color: var(--second-main-color);
+  cursor: pointer;
+}
+.icon-container img {
+  filter: var(--save-location-icon-color);
+}
+
+@media (max-width: 1280px) {
+  .logo {
+    width: 45px;
+  }
+  .left-menu-container {
+    font-size: 0.8rem;
+    width: 80px;
+  }
+  .theme-toggler {
+    width: 30px;
+  }
+  .search-input {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  .add-favorite-location-btn {
+    height: 40px;
+    width: 40px;
+  }
+  .add-favorite-location-btn img {
+    width: 20px;
+  }
+  .search-results-container {
+    top: 70%;
+  }
+  .search-results-container li {
+    font-size: 0.8rem;
+  }
+  .left-weather-info-container p {
+    font-size: 0.7rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 10px;
+  }
+  .weather-info-place {
+    font-size: 3rem;
+  }
+  .weather-info-degrees {
+    font-size: 3rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.7rem;
+  }
+  .day-forecast h5 {
+    font-size: 0.7rem;
+  }
+  .day-forecast h3 {
+    font-size: 1.1rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 45px;
+    height: 45px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 0.7rem;
+  }
+  .air-conditions-icon {
+    width: 15px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.7rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 1.5rem;
+  }
+  .week-forecast-container {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .week-forecasts-title {
+    font-size: 0.7rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecast-date {
+    font-size: 0.7rem;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 30px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.7rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.7rem;
+  }
+  .city-info-container h1 {
+    font-size: 1.5rem;
+  }
+  .city-info-container p {
+    font-size: 0.8rem;
+  }
+  .icon-container img {
+    width: 25px;
+  }
+  .search-results-container li {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 1230px) {
+  .logo {
+    width: 35px;
+  }
+  .left-menu-container {
+    font-size: 0.6rem;
+    width: 70px;
+  }
+  .left-menu-button img {
+    width: 15px;
+  }
+  .theme-toggler {
+    width: 24px;
+  }
+  .search-input {
+    height: 30px;
+    font-size: 0.6rem;
+  }
+  .add-favorite-location-btn {
+    height: 32px;
+    width: 32px;
+  }
+  .add-favorite-location-btn img {
+    width: 17px;
+  }
+  .search-results-container {
+    top: 70%;
+  }
+  .search-results-container li {
+    font-size: 0.6rem;
+  }
+  .left-weather-info-container p {
+    font-size: 0.6rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 10px;
+  }
+  .weather-info-place {
+    font-size: 2.4rem;
+  }
+  .weather-info-degrees {
+    font-size: 2.4rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.6rem;
+  }
+  .day-forecast h5 {
+    font-size: 0.6rem;
+  }
+  .day-forecast h3 {
+    font-size: 0.9rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 40px;
+    height: 40px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 0.7rem;
+  }
+  .air-conditions-icon {
+    width: 15px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.7rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 1.1rem;
+  }
+  .week-forecast-container {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .week-forecasts-title {
+    font-size: 0.7rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecast-date {
+    font-size: 0.7rem;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 24px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.7rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.7rem;
+  }
+  .city-info-container h1 {
+    font-size: 1.1rem;
+  }
+  .city-info-container p {
+    font-size: 0.7rem;
+  }
+  .icon-container img {
+    width: 22px;
+  }
+  .search-results-container li {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 1150px) {
+  .logo {
+    width: 35px;
+  }
+  .left-menu-container {
+    font-size: 0.5rem;
+    width: 60px;
+    gap: 20px;
+  }
+  .left-menu-button img {
+    width: 15px;
+  }
+  .theme-toggler {
+    width: 20px;
+  }
+  .search-input {
+    height: 30px;
+    font-size: 0.5rem;
+  }
+  .add-favorite-location-btn {
+    height: 30px;
+    width: 30px;
+  }
+  .add-favorite-location-btn img {
+    width: 13px;
+  }
+  .search-results-container {
+    top: 70%;
+  }
+  .search-results-container li {
+    font-size: 0.5rem;
+  }
+  .weather-info-container {
+    padding: 10px 50px;
+  }
+  .left-weather-info-container p {
+    font-size: 0.5rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 10px;
+  }
+  .weather-info-place {
+    font-size: 2rem;
+  }
+  .weather-info-degrees {
+    font-size: 2rem;
+  }
+  .day-forecast-container {
+    margin-bottom: 10px;
+    padding-top: 15px;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.5rem;
+  }
+  .day-forecast h5 {
+    font-size: 0.5rem;
+  }
+  .day-forecast h3 {
+    font-size: 0.7rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 30px;
+    height: 30px;
+    margin: 2px 0;
+  }
+  .air-conditions-container {
+    padding-top: 15px;
+  }
+  .air-conditions-h5 {
+    font-size: 0.5rem;
+  }
+  .air-conditions-container > h5 {
+    margin-bottom: 10px;
+  }
+  .air-conditions-icon {
+    width: 12px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.5rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 0.9rem;
+  }
+  .week-forecasts-container {
+    padding: 20px 30px;
+  }
+  .week-forecast-container {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  .week-forecasts-title {
+    font-size: 0.5rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecast-date {
+    font-size: 0.5rem;
+    width: 35px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 24px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.5rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.5rem;
+    width: 35px;
+  }
+  .city-info-container h1 {
+    font-size: 0.9rem;
+  }
+  .city-info-container p {
+    font-size: 0.5rem;
+  }
+  .icon-container img {
+    width: 18px;
+  }
+  .search-results-container li {
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 900px) {
+  .logo {
+    width: 30px;
+  }
+  .left-menu-container {
+    font-size: 0.5rem;
+    width: 50px;
+    gap: 20px;
+  }
+  .left-menu-button img {
+    width: 15px;
+  }
+  .theme-toggler {
+    width: 20px;
+  }
+  .search-input {
+    height: 25px;
+    font-size: 0.5rem;
+  }
+  .add-favorite-location-btn {
+    height: 25px;
+    width: 25px;
+  }
+  .add-favorite-location-btn img {
+    width: 13px;
+  }
+  .search-results-container {
+    top: 66%;
+  }
+  .search-results-container li {
+    font-size: 0.5rem;
+  }
+  .weather-info-container {
+    padding: 5px 50px;
+  }
+  .left-weather-info-container p {
+    font-size: 0.3rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 0px;
+  }
+  .weather-info-place {
+    font-size: 1.5rem;
+  }
+  .weather-info-degrees {
+    font-size: 1.5rem;
+  }
+  .day-forecast-container {
+    margin-bottom: 10px;
+    padding-top: 10px;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.5rem;
+  }
+  .day-forecast h5 {
+    margin-bottom: 5px;
+    font-size: 0.5rem;
+  }
+  .day-forecast h3 {
+    margin-top: 7px;
+    font-size: 0.5rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 22px;
+    height: 22px;
+    margin: 2px 0;
+  }
+  .day-forecast-container > h5 {
+    font-size: 0.5rem;
+  }
+  .air-conditions-container {
+    padding-top: 10px;
+  }
+  .air-conditions-h5 {
+    font-size: 0.5rem;
+  }
+  .air-conditions-container > h5 {
+    margin-bottom: 10px;
+  }
+  .air-conditions-icon {
+    width: 10px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.4rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 0.7rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecasts-container {
+    padding: 20px 30px;
+  }
+  .week-forecast-container {
+    padding-bottom: 11px;
+    margin-bottom: 11px;
+  }
+  .week-forecasts-title {
+    font-size: 0.4rem;
+    margin-bottom: 10px;
+  }
+  .week-forecast-date {
+    font-size: 0.4rem;
+    width: 26px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 19px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.4rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.4rem;
+    width: 26px;
+  }
+  .saved-cities-container {
+    gap: 5px;
+  }
+  .city-info-container {
+    padding: 7px;
+  }
+  .city-info-container h1 {
+    font-size: 0.8rem;
+  }
+  .city-info-container p {
+    font-size: 0.3rem;
+  }
+  .icon-container {
+    padding: 10px;
+  }
+  .icon-container img {
+    width: 15px;
+  }
+  .search-results-container li {
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .logo {
+    width: 25px;
+  }
+  .left-menu-container {
+    font-size: 0.5rem;
+    padding: 10px;
+    width: 40px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+  .left-menu-button h5 {
+    font-size: 0.4rem;
+  }
+  .left-menu-button img {
+    width: 12px;
+  }
+  .theme-toggler {
+    width: 17px;
+  }
+  .search-input {
+    height: 24px;
+    font-size: 0.4rem;
+    border-radius: 5px;
+  }
+  .add-favorite-location-btn {
+    height: 24px;
+    width: 24px;
+    border-radius: 5px;
+  }
+  .add-favorite-location-btn img {
+    width: 12px;
+  }
+  .search-results-container {
+    top: 66%;
+    border-radius: 5px;
+  }
+  .search-results-container li {
+    font-size: 0.4rem;
+  }
+  .weather-info-container {
+    padding: 5px 30px;
+  }
+  .left-weather-info-container p {
+    font-size: 0.25rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 0px;
+  }
+  .weather-info-place {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+  .weather-info-degrees {
+    font-size: 1.1rem;
+  }
+  .day-forecast-container {
+    margin-bottom: 5px;
+    padding-top: 7px;
+    border-radius: 10px;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.4rem;
+  }
+  .day-forecast h5 {
+    margin-bottom: 2px;
+    font-size: 0.4rem;
+  }
+  .day-forecast h3 {
+    margin-top: 5px;
+    font-size: 0.4rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+  }
+  .day-forecast-container > h5 {
+    font-size: 0.4rem;
+  }
+  .air-conditions-container {
+    padding-top: 7px;
+    border-radius: 10px;
+  }
+  .air-conditions-h5 {
+    font-size: 0.4rem;
+  }
+  .air-conditions-container > h5 {
+    margin-bottom: 15px;
+  }
+  .air-conditions-icon {
+    width: 8px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.4rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 0.5rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: -5px;
+    margin-bottom: 5px;
+  }
+  .week-forecasts-container {
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  .week-forecast-container {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  .week-forecasts-title {
+    font-size: 0.3rem;
+    margin-bottom: 5px;
+  }
+  .week-forecast-date {
+    font-size: 0.3rem;
+    width: 32px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 14px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.3rem;
+    margin-left: 2px;
+  }
+  .week-forecast-degrees {
+    font-size: 0.3rem;
+    width: 25px;
+  }
+  .saved-cities-container {
+    gap: 5px;
+  }
+  .city-info-container {
+    padding: 7px;
+    border-radius: 5px;
+  }
+  .city-info-container h1 {
+    font-size: 0.6rem;
+  }
+  .city-info-container p {
+    font-size: 0.3rem;
+  }
+  .icon-container {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .icon-container img {
+    width: 15px;
+  }
+}
+@media (max-width: 500px) {
+  .app-container {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+  }
+  .logo {
+    width: 40px;
+  }
+  .left-menu-container {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    padding: 30px;
+    width: 100%;
+    height: 60px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+  .left-menu-button h5 {
+    font-size: 0.8rem;
+    display: none;
+  }
+  .left-menu-button img {
+    width: 25px;
+  }
+  .theme-toggler {
+    width: 25px;
+    margin: 0;
+  }
+  main {
+    height: auto;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .search-containers {
+    width: 100%;
+  }
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  .search-input {
+    height: 40px;
+    width: 100%;
+    font-size: 0.8rem;
+    border-radius: 5px;
+  }
+  .add-favorite-location-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+  }
+  .add-favorite-location-btn img {
+    width: 20px;
+  }
+  .search-results-container {
+    top: 66%;
+    border-radius: 5px;
+  }
+  .search-results-container li {
+    font-size: 0.8rem;
+  }
+  .weather-info-container {
+    padding: 20px 30px;
+    width: 100%;
+  }
+  .weather-info-container .weather-type {
+    width: 35%;
+    min-width: 100px;
+  }
+  .left-weather-info-container p {
+    font-size: 0.7rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 0px;
+  }
+  .weather-info-place {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+  .weather-info-degrees {
+    font-size: 2.5rem;
+  }
+  .day-forecast-container {
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .day-forecasts-container {
+    width: 100%;
+  }
+  .day-forecast h5 {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+  .day-forecast h3 {
+    margin-top: 15px;
+    font-size: 0.8rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+  .day-forecast-container > h5 {
+    font-size: 0.8rem;
+  }
+  .air-conditions-container {
+    padding-top: 20px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .air-conditions-h5 {
+    font-size: 0.8rem;
+  }
+  .air-conditions-container > h5 {
+    margin-bottom: 15px;
+  }
+  .air-conditions-icon {
+    width: 15px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.8rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 1rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .week-forecasts-container {
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .week-forecast-container {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .week-forecasts-title {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+  .week-forecast-date {
+    font-size: 0.8rem;
+    width: 60px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 35px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.8rem;
+    margin-left: 15px;
+  }
+  .week-forecast-degrees {
+    font-size: 0.8rem;
+    width: 60px;
+  }
+  .saved-cities-container {
+    gap: 7px;
+    width: 100%;
+  }
+  .saved-city {
+    width: 100%;
+  }
+  .saved-city:last-child {
+    padding-bottom: 0;
+  }
+  .city-info-container {
+    padding: 12px;
+    border-radius: 5px;
+  }
+  .city-info-container h1 {
+    font-size: 1.5rem;
+  }
+  .city-info-container p {
+    font-size: 0.8rem;
+  }
+  .icon-container {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .icon-container img {
+    width: 25px;
+  }
+}
+@media (min-width: 1280px) {
+  .logo {
+    width: 45px;
+  }
+  .left-menu-container {
+    font-size: 0.8rem;
+    width: 80px;
+  }
+  .theme-toggler {
+    width: 30px;
+  }
+  .search-input {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  .add-favorite-location-btn {
+    height: 40px;
+    width: 40px;
+  }
+  .add-favorite-location-btn img {
+    width: 20px;
+  }
+  .search-results-container {
+    top: 70%;
+  }
+  .search-results-container li {
+    font-size: 0.8rem;
+  }
+  .left-weather-info-container p {
+    font-size: 0.7rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 10px;
+  }
+  .weather-info-place {
+    font-size: 3rem;
+  }
+  .weather-info-degrees {
+    font-size: 3rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.7rem;
+  }
+  .day-forecast h5 {
+    font-size: 0.7rem;
+  }
+  .day-forecast h3 {
+    font-size: 1.1rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 45px;
+    height: 45px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 0.7rem;
+  }
+  .air-conditions-icon {
+    width: 15px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.7rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 1.5rem;
+  }
+  .week-forecast-container {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .week-forecasts-title {
+    font-size: 0.7rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecast-date {
+    font-size: 0.7rem;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 30px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.7rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.7rem;
+  }
+  .city-info-container h1 {
+    font-size: 1.5rem;
+  }
+  .city-info-container p {
+    font-size: 0.8rem;
+  }
+  .icon-container img {
+    width: 25px;
+  }
+  .search-results-container li {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1400px) {
+  .logo {
+    width: 50px;
+  }
+  .left-menu-container {
+    font-size: 0.9rem;
+    width: 90px;
+  }
+  .theme-toggler {
+    width: 35px;
+  }
+  .search-input {
+    height: 50px;
+    font-size: 0.9rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 20px;
+  }
+  .add-favorite-location-btn {
+    height: 50px;
+    width: 50px;
+  }
+  .add-favorite-location-btn img {
+    width: 30px;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.8rem;
+  }
+  .day-forecast h5 {
+    font-size: 0.8rem;
+  }
+  .day-forecast h3 {
+    font-size: 1.1rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 45px;
+    height: 45px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 0.8rem;
+  }
+  .air-conditions-icon {
+    width: 18px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 0.8rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 1.8rem;
+  }
+  .week-forecast-container {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+  .week-forecasts-title {
+    font-size: 0.8rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 10px;
+    margin-bottom: 13px;
+  }
+  .week-forecast-date {
+    font-size: 0.7rem;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 30px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.7rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.8rem;
+  }
+  .city-info-container h1 {
+    font-size: 1.5rem;
+  }
+  .city-info-container p {
+    font-size: 0.9rem;
+  }
+  .icon-container img {
+    width: 25px;
+  }
+  .search-results-container li {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1550px) {
+  .logo {
+    width: 60px;
+  }
+  .left-menu-container {
+    font-size: 1rem;
+    width: 100px;
+  }
+  .left-menu-container .left-menu-button img {
+    width: 27px;
+  }
+  .left-weather-info-container p {
+    font-size: 0.9rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 28px;
+  }
+  .weather-info-place {
+    font-size: 3.3rem;
+  }
+  .weather-info-degrees {
+    font-size: 4.2rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 0.9rem;
+  }
+  .day-forecast h5 {
+    font-size: 1rem;
+  }
+  .day-forecast h3 {
+    font-size: 1.5rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 68px;
+    height: 68px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 0.9rem;
+  }
+  .air-conditions-icon {
+    width: 23px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 1rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 2rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .week-forecasts-title {
+    font-size: 0.9rem;
+  }
+  .week-forecast-date {
+    font-size: 0.9rem;
+    width: 65px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 40px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 0.9rem;
+  }
+  .week-forecast-degrees {
+    font-size: 0.9rem;
+    width: 65px;
+  }
+  .city-info-container h1 {
+    font-size: 2rem;
+  }
+  .city-info-container p {
+    font-size: 1rem;
+  }
+  .icon-container img {
+    width: 35px;
+  }
+  .search-results-container li {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1700px) {
+  .logo {
+    width: 70px;
+  }
+  .left-menu-container {
+    font-size: 1.15rem;
+    width: 110px;
+  }
+  .left-menu-container .left-menu-button img {
+    width: 28px;
+  }
+  .search-input {
+    height: 65px;
+    font-size: 1.15rem;
+  }
+  .add-favorite-location-btn {
+    height: 65px;
+    width: 65px;
+  }
+  .add-favorite-location-btn img {
+    width: 40px;
+  }
+  .left-weather-info-container p {
+    font-size: 1rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 30px;
+  }
+  .weather-info-place {
+    font-size: 3.5rem;
+  }
+  .weather-info-degrees {
+    font-size: 4.3rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 1rem;
+  }
+  .day-forecast h5 {
+    font-size: 1.2rem;
+  }
+  .day-forecast h3 {
+    font-size: 1.7rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 70px;
+    height: 70px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 1rem;
+  }
+  .air-conditions-icon {
+    width: 25px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 1.2rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 2.2rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .week-forecasts-title {
+    font-size: 0.9rem;
+  }
+  .week-forecast-date {
+    font-size: 1rem;
+    width: 65px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 50px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 1rem;
+  }
+  .week-forecast-degrees {
+    font-size: 1rem;
+    width: 65px;
+  }
+  .city-info-container h1 {
+    font-size: 2rem;
+  }
+  .city-info-container p {
+    font-size: 1rem;
+  }
+  .icon-container img {
+    width: 35px;
+  }
+  .search-results-container li {
+    font-size: 1.15rem;
+  }
+}
+@media (min-width: 1900px) {
+  .weather-info-place {
+    font-size: 3.9rem;
+  }
+  .left-weather-info-container p {
+    font-size: 1.1rem;
+  }
+  .week-forecasts-title {
+    font-size: 1rem;
+  }
+  .weather-info-degrees {
+    font-size: 5rem;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 60px;
+  }
+}
+@media (min-width: 2100px) {
+  .logo {
+    width: 90px;
+  }
+  .left-menu-container {
+    font-size: 1.3rem;
+    width: 130px;
+  }
+  .left-menu-container .left-menu-button img {
+    width: 35px;
+  }
+  .search-input {
+    height: 70px;
+    font-size: 1.3rem;
+  }
+  .add-favorite-location-btn {
+    height: 70px;
+    width: 70px;
+  }
+  .add-favorite-location-btn img {
+    width: 40px;
+  }
+  .left-weather-info-container p {
+    font-size: 1.3rem;
+  }
+  .upper-left-weather-info-container {
+    margin-bottom: 30px;
+  }
+  .weather-info-place {
+    font-size: 3.9rem;
+  }
+  .weather-info-degrees {
+    font-size: 4.7rem;
+  }
+  .day-forecast-container h5 {
+    font-size: 1.3rem;
+  }
+  .day-forecast h5 {
+    font-size: 1.3rem;
+  }
+  .day-forecast h3 {
+    font-size: 2.2rem;
+  }
+  .day-forecast .day-forecast-icon {
+    width: 75px;
+    height: 75px;
+    margin: 2px 0;
+  }
+  .air-conditions-h5 {
+    font-size: 1.3rem;
+  }
+  .air-conditions-icon {
+    width: 35px;
+  }
+  .air-condition-info-container h5 {
+    font-size: 1.5rem;
+  }
+  .air-condition-info-container h2 {
+    font-size: 2.5rem;
+  }
+  .air-condition-types-upper-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .week-forecast-container {
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+  }
+  .week-forecasts-title {
+    font-size: 1.3rem;
+  }
+  .week-forecast-date {
+    font-size: 1.2rem;
+    width: 70px;
+  }
+  .week-forecast-type-container .week-forecast-type-icon {
+    width: 50px;
+  }
+  .week-forecast-type-container h5 {
+    font-size: 1.2rem;
+  }
+  .week-forecast-degrees {
+    font-size: 1.2rem;
+    width: 80px;
+  }
+  .city-info-container h1 {
+    font-size: 2.4rem;
+  }
+  .city-info-container p {
+    font-size: 1.2rem;
+  }
+  .icon-container img {
+    width: 40px;
+  }
+  .search-results-container li {
+    font-size: 1.3rem;
+  }
 }/*# sourceMappingURL=index.css.map */

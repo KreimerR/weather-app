@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "country-state-city": "^3.2.1",
     "openmeteo": "^1.2.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
