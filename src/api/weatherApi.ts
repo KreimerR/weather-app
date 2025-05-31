@@ -1,5 +1,4 @@
-import { API_KEY } from "./apiKeys.ts"
-
+const API_KEY = "b5d613f036ff45459a2120229252305"
 const BASE_URL = "http://api.weatherapi.com/v1"
 
 export default async function fetchForecast(lat: string, lon: string) {
