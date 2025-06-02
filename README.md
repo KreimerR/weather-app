@@ -10,6 +10,12 @@ This is a responsive and feature-rich Weather application built with React and T
 - React
 
 ## How to Run
+You can use this project in one of the following ways:
+
+### Option 1: Use the Live Version
+Simply open [this link](https://weather-app-smoky-rho-64.vercel.app/) in your browser to access the application online
+
+### Option 2: Run Locally
 1. Clone the repository:
    ```bash
    git clone https://github.com/KreimerR/weather-app.git
